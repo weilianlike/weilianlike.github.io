@@ -6,14 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 马衍研个人博客</title>
+  <title>&#39;SpringBoot整合Shiro&#39; | 马衍研个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="马衍研个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;index.html">
+  <meta name="description" content="依赖包12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.shiro&amp;lt;&#x2F;groupId&amp;gt;    &amp;lt;artifactId&amp;gt;shiro-spring&amp;lt;&#x2F;artifactId&amp;gt;    &amp;lt;version&amp;gt;1.3.2&amp;lt;&#x2F;version&amp;gt;&amp;lt;&#x2F;dependency&amp;gt; 数据库表一切从简，用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;SpringBoot整合Shiro&#39;">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;11&#x2F;SpringBoot%E6%95%B4%E5%90%88Shiro&#x2F;index.html">
 <meta property="og:site_name" content="马衍研个人博客">
+<meta property="og:description" content="依赖包12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.shiro&amp;lt;&#x2F;groupId&amp;gt;    &amp;lt;artifactId&amp;gt;shiro-spring&amp;lt;&#x2F;artifactId&amp;gt;    &amp;lt;version&amp;gt;1.3.2&amp;lt;&#x2F;version&amp;gt;&amp;lt;&#x2F;dependency&amp;gt; 数据库表一切从简，用">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-14c71a60da237fbf.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;291&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-9bfb0a984fc9c28c.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;106&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-6ef51f395cf8c6b1.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;495&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-7048df42b04f5763.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;387&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-52bda59ed16c2de4.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;453&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-cb0266faa390c80f.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;411&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-2b07ade4277c9f3d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;475&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-86ce356a15a49615.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;380&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-cb377665ca151889.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;454&#x2F;format&#x2F;webp">
+<meta property="og:updated_time" content="2019-11-13T02:08:18.142Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;8807674-14c71a60da237fbf.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;291&#x2F;format&#x2F;webp">
   
     <link rel="alternative" href="/atom.xml" title="马衍研个人博客" type="application/atom+xml">
   
@@ -143,76 +156,215 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringBoot整合Shiro" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/13/MybatisPlus/" class="archive-article-date">
-  	<time datetime="2019-11-13T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/13/MybatisPlus/">&#39;MybatisPlus简介&#39;</a>
+    <h1 class="article-title" itemprop="name">
+      &#39;SpringBoot整合Shiro&#39;
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/11/SpringBoot%E6%95%B4%E5%90%88Shiro/" class="archive-article-date">
+        
+        <a href="/2019/10/11/SpringBoot%E6%95%B4%E5%90%88Shiro/" class="archive-article-date">
   	<time datetime="2019-10-11T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/11/SpringBoot%E6%95%B4%E5%90%88Shiro/">&#39;SpringBoot整合Shiro&#39;</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="依赖包"><a href="#依赖包" class="headerlink" title="依赖包"></a>依赖包</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="数据库表"><a href="#数据库表" class="headerlink" title="数据库表"></a>数据库表</h2><p><strong>一切从简，用户 user 表，以及角色 role 表</strong></p>
+<p>   <img src="https://upload-images.jianshu.io/upload_images/8807674-14c71a60da237fbf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/291/format/webp" alt=""><br>user</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8807674-9bfb0a984fc9c28c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/106/format/webp" alt=""><br>role</p>
+<h2 id="Shiro-相关类"><a href="#Shiro-相关类" class="headerlink" title="Shiro 相关类"></a>Shiro 相关类</h2><h3 id="Shiro-配置类"><a href="#Shiro-配置类" class="headerlink" title="Shiro 配置类"></a>Shiro 配置类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShiroConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ShiroFilterFactoryBean <span class="title">shirFilter</span><span class="params">(SecurityManager securityManager)</span> </span>&#123;</span><br><span class="line">        ShiroFilterFactoryBean shiroFilterFactoryBean = <span class="keyword">new</span> ShiroFilterFactoryBean();</span><br><span class="line">        <span class="comment">// 必须设置 SecurityManager</span></span><br><span class="line">        shiroFilterFactoryBean.setSecurityManager(securityManager);</span><br><span class="line">        <span class="comment">// setLoginUrl 如果不设置值，默认会自动寻找Web工程根目录下的"/login.jsp"页面 或 "/login" 映射</span></span><br><span class="line">        shiroFilterFactoryBean.setLoginUrl(<span class="string">"/notLogin"</span>);</span><br><span class="line">        <span class="comment">// 设置无权限时跳转的 url;</span></span><br><span class="line">        shiroFilterFactoryBean.setUnauthorizedUrl(<span class="string">"/notRole"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置拦截器</span></span><br><span class="line">        Map&lt;String, String&gt; filterChainDefinitionMap = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">//游客，开发权限</span></span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/guest/**"</span>, <span class="string">"anon"</span>);</span><br><span class="line">        <span class="comment">//用户，需要角色权限 “user”</span></span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/user/**"</span>, <span class="string">"roles[user]"</span>);</span><br><span class="line">        <span class="comment">//管理员，需要角色权限 “admin”</span></span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/admin/**"</span>, <span class="string">"roles[admin]"</span>);</span><br><span class="line">        <span class="comment">//开放登陆接口</span></span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/login"</span>, <span class="string">"anon"</span>);</span><br><span class="line">        <span class="comment">//其余接口一律拦截</span></span><br><span class="line">        <span class="comment">//主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截</span></span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/**"</span>, <span class="string">"authc"</span>);</span><br><span class="line"></span><br><span class="line">        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);</span><br><span class="line">        System.out.println(<span class="string">"Shiro拦截器工厂类注入成功"</span>);</span><br><span class="line">        <span class="keyword">return</span> shiroFilterFactoryBean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注入 securityManager</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DefaultWebSecurityManager securityManager = <span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">        <span class="comment">// 设置realm.</span></span><br><span class="line">        securityManager.setRealm(customRealm());</span><br><span class="line">        <span class="keyword">return</span> securityManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 自定义身份认证 realm;</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * 必须写这个类，并加上 <span class="doctag">@Bean</span> 注解，目的是注入 CustomRealm，</span></span><br><span class="line"><span class="comment">     * 否则会影响 CustomRealm类 中其他类的依赖注入</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CustomRealm <span class="title">customRealm</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CustomRealm();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>里面的 <code>SecurityManager</code>类导入的应该是 <code>import org.apache.shiro.mgt.SecurityManager;</code>但是，如果你是复制代码过来的话，会默认导入 <code>java.lang.SecurityManager</code> 这里也稍稍有点坑，其他的类的话，也是都属于 shiro 包里面的类</p>
+<p><code>shirFilter</code> 方法中主要是设置了一些重要的跳转 url，比如未登陆时，无权限时的跳转；以及设置了各类 url 的权限拦截，比如 /user 开始的 url 需要 user 权限，/admin 开始的 url 需要 admin 权限等</p>
+<h3 id="权限拦截-Filter"><a href="#权限拦截-Filter" class="headerlink" title="权限拦截 Filter"></a>权限拦截 Filter</h3><p>当运行一个Web应用程序时，Shiro将会创建一些有用的默认 Filter 实例，并自动地将它们置为可用，而这些默认的 Filter 实例是被 DefaultFilter 枚举类定义的，当然我们也可以自定义 Filter 实例，这些在以后的文章中会讲到</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8807674-6ef51f395cf8c6b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/495/format/webp" alt=""><br>DefaultFilter</p>
+<p><strong>Filter: *<em>解释<br>*</em>anon: *<em>无参，开放权限，可以理解为匿名用户或游客<br>*</em>authc    *<em>无参，需要认证<br>*</em>logout    *<em>无参，注销，执行后会直接跳转到shiroFilterFactoryBean.setLoginUrl(); 设置的 url<br>*</em>authcBasic    *<em>无参，表示 httpBasic 认证<br>*</em>user    *<em>无参，表示必须存在用户，当登入操作时不做检查<br>*</em>ssl    *<em>无参，表示安全的URL请求，协议为 https<br>*</em>perms[user]</strong>    参数可写多个，表示需要某个或某些权限才能通过，多个参数时写 perms[“user, admin”]，当有多个参数时必须每个参数都通过才算通过<br><strong>roles[admin]</strong>    参数可写多个，表示是某个或某些角色才能通过，多个参数时写 roles[“admin，user”]，当有多个参数时必须每个参数都通过才算通过<br><strong>rest[user]    *<em>根据请求的方法，相当于 perms[user:method]，其中 method 为 post，get，delete 等<br>*</em>port[8081]</strong>    当请求的URL端口不是8081时，跳转到schemal://serverName:8081?queryString 其中 schmal 是协议 http 或 https 等等，serverName 是你访问的 Host，8081 是 Port 端口，queryString 是你访问的 URL 里的 ? 后面的参数<br>常用的主要就是 anon，authc，user，roles，perms 等</p>
+<p><strong>注意：</strong>anon, authc, authcBasic, user 是第一组认证过滤器，perms, port, rest, roles, ssl 是第二组授权过滤器，要通过授权过滤器，就先要完成登陆认证操作（即先要完成认证才能前去寻找授权) 才能走第二组授权器（例如访问需要 roles 权限的 url，如果还没有登陆的话，会直接跳转到 <code>shiroFilterFactoryBean.setLoginUrl();</code> 设置的 url ）</p>
+<h3 id="自定义-realm-类"><a href="#自定义-realm-类" class="headerlink" title="自定义 realm 类"></a>自定义 realm 类</h3><p>我们首先要继承 <code>AuthorizingRealm</code> 类来自定义我们自己的 <code>realm</code>以进行我们自定义的身份，权限认证操作。<br>记得要 <code>Override</code> 重写 <code>doGetAuthenticationInfo</code> 和 <code>doGetAuthorizationInfo</code> 两个方法（两个方法名很相似，不要搞错）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomRealm</span> <span class="keyword">extends</span> <span class="title">AuthorizingRealm</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setUserMapper</span><span class="params">(UserMapper userMapper)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userMapper = userMapper;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取身份验证信息</span></span><br><span class="line"><span class="comment">     * Shiro中，最终是通过 Realm 来获取应用程序中的用户、角色及权限信息的。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> authenticationToken 用户身份信息 token</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回封装了用户信息的 AuthenticationInfo 实例</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthenticationInfo <span class="title">doGetAuthenticationInfo</span><span class="params">(AuthenticationToken authenticationToken)</span> <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"————身份认证方法————"</span>);</span><br><span class="line">        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;</span><br><span class="line">        <span class="comment">// 从数据库获取对应用户名密码的用户</span></span><br><span class="line">        String password = userMapper.getPassword(token.getUsername());</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == password) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> AccountException(<span class="string">"用户名不正确"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!password.equals(<span class="keyword">new</span> String((<span class="keyword">char</span>[]) token.getCredentials()))) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> AccountException(<span class="string">"密码不正确"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SimpleAuthenticationInfo(token.getPrincipal(), password, getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取授权信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> principalCollection</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthorizationInfo <span class="title">doGetAuthorizationInfo</span><span class="params">(PrincipalCollection principalCollection)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"————权限认证————"</span>);</span><br><span class="line">        String username = (String) SecurityUtils.getSubject().getPrincipal();</span><br><span class="line">        SimpleAuthorizationInfo info = <span class="keyword">new</span> SimpleAuthorizationInfo();</span><br><span class="line">        <span class="comment">//获得该用户角色</span></span><br><span class="line">        String role = userMapper.getRole(username);</span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="comment">//需要将 role 封装到 Set 作为 info.setRoles() 的参数</span></span><br><span class="line">        set.add(role);</span><br><span class="line">        <span class="comment">//设置该用户拥有的角色</span></span><br><span class="line">        info.setRoles(set);</span><br><span class="line">        <span class="keyword">return</span> info;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重写的两个方法分别是实现身份认证以及权限认证，shiro 中有个作登陆操作的 Subject.login() 方法，当我们把封装了用户名，密码的 token 作为参数传入，便会跑进这两个方法里面（不一定两个方法都会进入）</p>
+<p>其中 <code>doGetAuthorizationInfo</code> 方法只有在需要权限认证时才会进去，比如前面配置类中配置了 <code>filterChainDefinitionMap.put(&quot;/admin/**&quot;, &quot;roles[admin]&quot;);</code> 的管理员角色，这时进入 /admin 时就会进入 <code>doGetAuthorizationInfo</code> 方法来检查权限；而 <code>doGetAuthenticationInfo</code> 方法则是需要身份认证时（比如前面的 <code>Subject.login()</code> 方法）才会进入</p>
+<p>再说下 <code>UsernamePasswordToken</code> 类，我们可以从该对象拿到登陆时的用户名和密码（登陆时会使用 <code>new UsernamePasswordToken(username, password);</code>），而 get 用户名或密码有以下几个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">token.getUsername()  <span class="comment">//获得用户名 String</span></span><br><span class="line">token.getPrincipal() <span class="comment">//获得用户名 Object </span></span><br><span class="line">token.getPassword()  <span class="comment">//获得密码 char[]</span></span><br><span class="line">token.getCredentials() <span class="comment">//获得密码 Object</span></span><br></pre></td></tr></table></figure>
+<p>注意：有很多人会发现，<code>UserMapper</code> 等类，接口无法通过 <code>@Autowired</code> 注入进来，跑程序的时候会报 <code>NullPointerException</code>，网上说了很多诸如是 Spring 加载顺序等原因，但其实有一个很重要的地方要大家注意，<code>CustomRealm</code> 这个类是在 shiro 配置类的 <code>securityManager.setRealm()</code> 方法中设置进去的，而很多人直接写<code>securityManager.setRealm(new CustomRealm());</code> ,这样是不行的，必须要使用 @Bean 注入 MyRealm，不能直接 new 对象：</p>
+<pre><code>@Bean
+public SecurityManager securityManager() {
+    DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+    // 设置realm.
+    securityManager.setRealm(customRealm());
+    return securityManager;
+}
 
-        <div class="article-info info-on-right">
-          
-          
+@Bean
+public CustomRealm customRealm() {
+    return new CustomRealm();
+}</code></pre><p>道理也很简单，和 Controller 中调用 Service 一样，都是 SpringBean，不能自己 new</p>
+<p>当然，同样的道理也可以这样写：</p>
+<pre><code>@Bean
+public SecurityManager securityManager(CustomRealm customRealm) {
+    DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+    // 设置realm.
+    securityManager.setRealm(customRealm);
+    return securityManager;
+}</code></pre><p>然后只要在 CustomRealm 类加上个类似 @Component 的注解即可</p>
+<h2 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h2><p>本文的功能全部以接口返回 json 数据的方式实现</p>
+<h3 id="根据-url-权限分配-controller"><a href="#根据-url-权限分配-controller" class="headerlink" title="根据 url 权限分配 controller"></a>根据 url 权限分配 controller</h3><p><strong>游客</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/guest"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuestController</span></span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span>    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ResultMap resultMap;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/enter"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultMap <span class="title">login</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> resultMap.success().message(<span class="string">"欢迎进入，您的身份是游客"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/getMessage"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultMap <span class="title">submitLogin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> resultMap.success().message(<span class="string">"您拥有获得该接口的信息的权限！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>普通登陆用户</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span>    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ResultMap resultMap;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/getMessage"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultMap <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> resultMap.success().message(<span class="string">"您拥有用户权限，可以获得该接口的信息！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>管理员</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/admin"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span>    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ResultMap resultMap;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/getMessage"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultMap <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> resultMap.success().message(<span class="string">"您拥有管理员权限，可以获得该接口的信息！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>突然注意到 CustomRealm 类那里抛出了 AccountException 异常，现在建个类进行异常捕获</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ResultMap resultMap;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ExceptionController</span><span class="params">(ResultMap resultMap)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.resultMap = resultMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 捕捉 CustomRealm 抛出的异常</span></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(AccountException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">ResultMap</span> <span class="title">handleShiroException</span>(<span class="title">Exception</span> <span class="title">ex</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> resultMap.fail().message(ex.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>还有进行登陆等处理的 LoginController</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span>    </span><br><span class="line">    <span class="keyword">private</span> ResultMap resultMap;</span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/notLogin"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultMap <span class="title">notLogin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> resultMap.success().message(<span class="string">"您尚未登陆！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/notRole"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultMap <span class="title">notRole</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> resultMap.success().message(<span class="string">"您没有权限！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/logout"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultMap <span class="title">logout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Subject subject = SecurityUtils.getSubject();</span><br><span class="line">        <span class="comment">//注销</span></span><br><span class="line">        subject.logout();</span><br><span class="line">        <span class="keyword">return</span> resultMap.success().message(<span class="string">"成功注销！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 登陆</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> username 用户名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> password 密码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/login"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultMap <span class="title">login</span><span class="params">(String username, String password)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 从SecurityUtils里边创建一个 subject</span></span><br><span class="line">        Subject subject = SecurityUtils.getSubject();</span><br><span class="line">        <span class="comment">// 在认证提交前准备 token（令牌）</span></span><br><span class="line">        UsernamePasswordToken token = <span class="keyword">new</span> UsernamePasswordToken(username, password);</span><br><span class="line">        <span class="comment">// 执行认证登陆</span></span><br><span class="line">        subject.login(token);</span><br><span class="line">        <span class="comment">//根据权限，指定返回数据</span></span><br><span class="line">        String role = userMapper.getRole(username);</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"user"</span>.equals(role)) &#123;</span><br><span class="line">            <span class="keyword">return</span> resultMap.success().message(<span class="string">"欢迎登陆"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"admin"</span>.equals(role)) &#123;</span><br><span class="line">            <span class="keyword">return</span> resultMap.success().message(<span class="string">"欢迎来到管理员页面"</span>);</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> resultMap.fail().message(<span class="string">"权限错误！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><img src="https://upload-images.jianshu.io/upload_images/8807674-7048df42b04f5763.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/387/format/webp" alt=""><br>登陆前访问信息接口</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8807674-52bda59ed16c2de4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/453/format/webp" alt="普通用户登录" title="普通用户登录"><br>普通用户登录</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8807674-cb0266faa390c80f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/411/format/webp" alt="密码错误"><br>密码错误</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8807674-2b07ade4277c9f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp" alt="管理员登陆" title="管理员登陆"><br>管理员登陆</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8807674-86ce356a15a49615.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/380/format/webp" alt="获取信息" title="获取信息"><br>获取信息</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8807674-cb377665ca151889.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/454/format/webp" alt=""><br>获取信息</p>
+<p><a href="https://upload-images.jianshu.io/upload_images/8807674-3fc0b74103c51b2c.png?imageMogr2/auto-orient/strip|imageView2/2/w/353/format/webp" target="_blank" rel="noopener">https://upload-images.jianshu.io/upload_images/8807674-3fc0b74103c51b2c.png?imageMogr2/auto-orient/strip|imageView2/2/w/353/format/webp</a><br>注销</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/11/SpringBoot%E6%95%B4%E5%90%88Shiro/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/11/13/MybatisPlus/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          &#39;MybatisPlus简介&#39;
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -235,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
