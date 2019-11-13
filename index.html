@@ -152,20 +152,28 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/11/MybatisPlus/">&#39;MybatisPlus简介&#39;</a>
+      <a class="article-title" href="/2019/11/13/MybatisPlus/">&#39;MybatisPlus简介&#39;</a>
     </h1>
   
 
         
-        <a href="/2019/11/11/MybatisPlus/" class="archive-article-date">
-  	<time datetime="2019-11-11T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
+        <a href="/2019/11/13/MybatisPlus/" class="archive-article-date">
+  	<time datetime="2019-11-13T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#前言：<br>mybatis在持久层框架中还是比较火的，一般项目都是基于ssm。虽然mybatis可以直接在xml中通过SQL语句操作数据库，很是灵活。但正其操作都要通过SQL语句进行，就必须写大量的xml文件，很是麻烦。mybatis-plus就很好的解决了这个问题。<br><br><br>##一、mybatis-plus简介：<br><br><br>Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基础上只做增强不做改变，为简化开发、提高效率而生。这是官方给的定义，关于mybatis-plus的更多介绍及特性，可以参考mybatis-plus官网。那么它是怎么增强的呢？其实就是它已经封装好了一些crud方法，我们不需要再写xml了，直接调用这些方法就行，就类似于JPA。<br><br><br>###二、spring整合mybatis-plus:<br><br><br>正如官方所说，mybatis-plus在mybatis的基础上只做增强不做改变，因此其与spring的整合亦非常简单。只需把mybatis的依赖换成mybatis-plus的依赖，再把sqlSessionFactory换成mybatis-plus的即可。接下来看具体操作：</p>
+        <ul>
+<li><p><strong>前言：</strong><br>mybatis在持久层框架中还是比较火的，一般项目都是基于ssm。虽然mybatis可以直接在xml中通过SQL语句操作数据库，很是灵活。但正其操作都要通过SQL语句进行，就必须写大量的xml文件，很是麻烦。mybatis-plus就很好的解决了这个问题。</p>
+</li>
+<li><p><strong>一、mybatis-plus简介：</strong><br>Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基础上只做增强不做改变，为简化开发、提高效率而生。这是官方给的定义，关于mybatis-plus的更多介绍及特性，可以参考mybatis-plus官网。那么它是怎么增强的呢？其实就是它已经封装好了一些crud方法，我们不需要再写xml了，直接调用这些方法就行，就类似于JPA。</p>
+</li>
+<li><p><strong>二、spring整合mybatis-plus:</strong><br>正如官方所说，mybatis-plus在mybatis的基础上只做增强不做改变，因此其与spring的整合亦非常简单。只需把mybatis的依赖换成mybatis-plus的依赖，再把sqlSessionFactory换成mybatis-plus的即可。接下来看具体操作：<br>1、pom.xml:<br>核心依赖如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- spring --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-context&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.3.14.RELEASE&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-orm&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.3.14.RELEASE&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-test&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.3.14.RELEASE&lt;/version&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;!-- mp 依赖 --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mybatis-plus&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;2.3&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
 
@@ -178,7 +186,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/11/MybatisPlus/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/13/MybatisPlus/">展开全文 >></a>
         </p>
       
 
