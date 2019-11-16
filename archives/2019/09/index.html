@@ -6,16 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>&#39;MybatisPlus简介&#39; | 马衍研个人博客</title>
+  <title>Archives: 2019/9 | 马衍研个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言：mybatis在持久层框架中还是比较火的，一般项目都是基于ssm。虽然mybatis可以直接在xml中通过SQL语句操作数据库，很是灵活。但正其操作都要通过SQL语句进行，就必须写大量的xml文件，很是麻烦。mybatis-plus就很好的解决了这个问题。 一、mybatis-plus简介：Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基础上只">
-<meta property="og:type" content="article">
-<meta property="og:title" content="&#39;MybatisPlus简介&#39;">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;13&#x2F;MybatisPlus&#x2F;index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="马衍研个人博客">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;09&#x2F;index.html">
 <meta property="og:site_name" content="马衍研个人博客">
-<meta property="og:description" content="前言：mybatis在持久层框架中还是比较火的，一般项目都是基于ssm。虽然mybatis可以直接在xml中通过SQL语句操作数据库，很是灵活。但正其操作都要通过SQL语句进行，就必须写大量的xml文件，很是麻烦。mybatis-plus就很好的解决了这个问题。 一、mybatis-plus简介：Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基础上只">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-13T01:25:32.413Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="马衍研个人博客" type="application/atom+xml">
@@ -146,213 +143,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MybatisPlus" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      &#39;MybatisPlus简介&#39;
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/28/SpringBoot%E6%95%B4%E5%90%88Redis/" class="archive-article-date">
+  	<time datetime="2019-09-28T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/09/28/SpringBoot%E6%95%B4%E5%90%88Redis/">&#39;SpringBoot整合redis&#39;</a>
     </h1>
   
 
-        
-        <a href="/2019/11/13/MybatisPlus/" class="archive-article-date">
-  	<time datetime="2019-11-13T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>mybatis在持久层框架中还是比较火的，一般项目都是基于ssm。虽然mybatis可以直接在xml中通过SQL语句操作数据库，很是灵活。但正其操作都要通过SQL语句进行，就必须写大量的xml文件，很是麻烦。mybatis-plus就很好的解决了这个问题。</p>
-<h2 id="一、mybatis-plus简介："><a href="#一、mybatis-plus简介：" class="headerlink" title="一、mybatis-plus简介："></a>一、mybatis-plus简介：</h2><p>Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基础上只做增强不做改变，为简化开发、提高效率而生。这是官方给的定义，关于mybatis-plus的更多介绍及特性，可以参考mybatis-plus官网。那么它是怎么增强的呢？其实就是它已经封装好了一些crud方法，我们不需要再写xml了，直接调用这些方法就行，就类似于JPA。</p>
-<h2 id="二、spring整合mybatis-plus"><a href="#二、spring整合mybatis-plus" class="headerlink" title="二、spring整合mybatis-plus:"></a>二、spring整合mybatis-plus:</h2><p>正如官方所说，mybatis-plus在mybatis的基础上只做增强不做改变，因此其与spring的整合亦非常简单。只需把mybatis的依赖换成mybatis-plus的依赖，再把sqlSessionFactory换成mybatis-plus的即可。接下来看具体操作：</p>
-<h3 id="1、pom-xml"><a href="#1、pom-xml" class="headerlink" title="1、pom.xml:"></a>1、pom.xml:</h3><p>核心依赖如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- spring --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-context&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.3.14.RELEASE&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-orm&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.3.14.RELEASE&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-test&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.3.14.RELEASE&lt;/version&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;!-- mp 依赖 --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mybatis-plus&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;2.3&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong>这些是核心依赖，本项目还用到了mysql驱动、c3p0、日志（slf4j-api，slf4j-log4j2）、lombok。集成mybatis-plus要把mybatis、mybatis-spring去掉，避免冲突；lombok是一个工具，添加了这个依赖，开发工具再安装Lombok插件，就可以使用它了，最常用的用法就是在实体类中使用它的@Data注解，这样实体类就不用写set、get、toString等方法了。关于Lombok的更多用法，请自行百度。</p>
-<h3 id="2、log4j-xml"><a href="#2、log4j-xml" class="headerlink" title="2、log4j.xml:"></a>2、log4j.xml:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE log4j:configuration SYSTEM <span class="string">"log4j.dtd"</span>&gt;</span><br><span class="line">&lt;log4j:configuration xmlns:log4j=<span class="string">"http://jakarta.apache.org/log4j/"</span>&gt;</span><br><span class="line">    &lt;appender name=<span class="string">"STDOUT"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.apache.log4j.ConsoleAppender"</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">"Encoding"</span> value=<span class="string">"UTF-8"</span> /&gt;</span><br><span class="line">        &lt;layout <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.apache.log4j.PatternLayout"</span>&gt;</span><br><span class="line">            &lt;param name=<span class="string">"ConversionPattern"</span> value=<span class="string">"%-5p %d&#123;MM-dd</span></span><br><span class="line"><span class="string">HH:mm:ss,SSS&#125; %m (%F:%L) \n"</span> /&gt;</span><br><span class="line">        &lt;/layout&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;logger name=<span class="string">"java.sql"</span>&gt;</span><br><span class="line">        &lt;level value=<span class="string">"debug"</span> /&gt;</span><br><span class="line">    &lt;/logger&gt;</span><br><span class="line">    &lt;logger name=<span class="string">"org.apache.ibatis"</span>&gt;</span><br><span class="line">        &lt;level value=<span class="string">"info"</span> /&gt;</span><br><span class="line">    &lt;/logger&gt;</span><br><span class="line">    &lt;root&gt;</span><br><span class="line">        &lt;level value=<span class="string">"debug"</span> /&gt;</span><br><span class="line">        &lt;appender-ref ref=<span class="string">"STDOUT"</span> /&gt;</span><br><span class="line">    &lt;/root&gt;</span><br><span class="line">&lt;/log4j:configuration&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="3、jdbc-properties"><a href="#3、jdbc-properties" class="headerlink" title="3、jdbc.properties:"></a>3、jdbc.properties:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql:<span class="comment">///数据库名?useUnicode=true&amp;characterEncoding=utf8</span></span><br><span class="line">jdbc.username=root <span class="comment">//是你自己的数据库名</span></span><br><span class="line">jdbc.password=<span class="number">123456</span> <span class="comment">//是你自己的数据库密码</span></span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+          
 
-<h3 id="4、mybatis-config-xml"><a href="#4、mybatis-config-xml" class="headerlink" title="4、mybatis-config.xml:"></a>4、mybatis-config.xml:</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE configuration</span></span><br><span class="line"><span class="meta">PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="meta">"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>注：因为是与spring整合，所有mybatis-plus的大部分都写在spring的配置文件中，这里定义一个空的mybatis-config.xml即可。</p>
-<h3 id="5、spring-dao-xml"><a href="#5、spring-dao-xml" class="headerlink" title="5、spring-dao.xml:"></a>5、spring-dao.xml:</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>    </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>   </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>   </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:jee</span>=<span class="string">"http://www.springframework.org/schema/jee"</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"    </span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  </span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  </span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  </span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  </span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"</span>&gt;</span>    </span><br><span class="line">        </span><br><span class="line">    <span class="comment">&lt;!-- 配置整合mybatis-plus过程 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 1、配置数据库相关参数properties的属性：$&#123;url&#125; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:jdbc.properties"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 2、配置数据库连接池 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClass"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.driver&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbcUrl"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.url&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.username&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- mybatis的sqlsessionFactorybean：org.mybatis.spring.SqlSessionFactoryBean--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 3、配置mybatis-plus的sqlSessionFactory --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactory"</span> <span class="attr">class</span>=<span class="string">"com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span> <span class="attr">value</span>=<span class="string">"classpath:mybatis-config.xml"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"typeAliasesPackage"</span> <span class="attr">value</span>=<span class="string">"com.zhu.mybatisplus.entity"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 4、DAO接口所在包名，Spring会自动查找其下的类 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basePackage"</span> <span class="attr">value</span>=<span class="string">"com.zhu.mybatisplus.dao"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sqlSessionFactoryBeanName"</span> <span class="attr">value</span>=<span class="string">"sqlSessionFactory"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="6、entity"><a href="#6、entity" class="headerlink" title="6、entity:"></a>6、entity:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@TableName</span>(value = <span class="string">"tb_employee"</span>)<span class="comment">//指定表名</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="comment">//value与数据库主键列名一致，若实体类属性名与表主键列名一致可省略value</span></span><br><span class="line">    <span class="meta">@TableId</span>(value = <span class="string">"id"</span>,type = IdType.AUTO)<span class="comment">//指定自增策略</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="comment">//若没有开启驼峰命名，或者表中列名不符合驼峰规则，可通过该注解指定数据库表中的列名，exist标明数据表中有没有对应列</span></span><br><span class="line">    <span class="meta">@TableField</span>(value = <span class="string">"last_name"</span>,exist = <span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="keyword">private</span> Integer gender;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="7、mapper"><a href="#7、mapper" class="headerlink" title="7、mapper:"></a>7、mapper:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EmplopyeeDao</span> <span class="keyword">extends</span> <span class="title">BaseMapper</span>&lt;<span class="title">Employee</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样就完成了mybatis-plus与spring的整合。首先是把mybatis和mybatis-spring依赖换成mybatis-plus的依赖，然后把sqlsessionfactory换成mybatis-plus的，然后实体类中添加@TableName、@TableId等注解，最后mapper继承BaseMapper即可。</p>
-<h3 id="8、测试："><a href="#8、测试：" class="headerlink" title="8、测试："></a>8、测试：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">ContextConfiguration</span>(</span>&#123;<span class="string">"classpath:spring/spring-dao.xml"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DataSource dataSource;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDataSource</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        System.out.println(dataSource.getConnection());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行该junit，可输出获取到的连接，说明整合没问题</p>
-<h2 id="三、mp的通用crud"><a href="#三、mp的通用crud" class="headerlink" title="三、mp的通用crud:"></a>三、mp的通用crud:</h2><p><strong>需求：</strong><br>存在一张 tb_employee 表，且已有对应的实体类 Employee，实现tb_employee 表的 CRUD 操作我们需要做什么呢？<br><strong>基于 Mybatis：</strong><br>需要编写 EmployeeMapper 接口，并在 EmployeeMapper.xml 映射文件中手动编写 CRUD 方法对应的sql语句。<br><strong>基于 MP：</strong><br>只需要创建 EmployeeMapper 接口, 并继承 BaseMapper 接口。<br>我们已经有了Employee、tb_employee了，并且EmployeeDao也继承了BaseMapper了，接下来就使用crud方法。</p>
-<h3 id="1、insert操作："><a href="#1、insert操作：" class="headerlink" title="1、insert操作："></a>1、insert操作：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">ContextConfiguration</span>(</span>&#123;<span class="string">"classpath:spring/spring-dao.xml"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmplopyeeDao emplopyeeDao;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testInsert</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">        employee.setLastName(<span class="string">"东方不败"</span>);</span><br><span class="line">        employee.setEmail(<span class="string">"dfbb@163.com"</span>);</span><br><span class="line">        employee.setGender(<span class="number">1</span>);</span><br><span class="line">        employee.setAge(<span class="number">20</span>);</span><br><span class="line">        emplopyeeDao.insert(employee);</span><br><span class="line">        <span class="comment">//mybatisplus会自动把当前插入对象在数据库中的id写回到该实体中</span></span><br><span class="line">        System.out.println(employee.getId());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行添加操作，直接调用insert方法传入实体即可。</p>
-<h3 id="2、update操作："><a href="#2、update操作：" class="headerlink" title="2、update操作："></a>2、update操作：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUpdate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">        employee.setId(<span class="number">1</span>);</span><br><span class="line">        employee.setLastName(<span class="string">"更新测试"</span>);</span><br><span class="line">        <span class="comment">//emplopyeeDao.updateById(employee);//根据id进行更新，没有传值的属性就不会更新</span></span><br><span class="line">        emplopyeeDao.updateAllColumnById(employee);<span class="comment">//根据id进行更新，没传值的属性就更新为null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注：注意这两个update操作的区别，updateById方法，没有传值的字段不会进行更新，比如只传入了lastName，那么age、gender等属性就会保留原来的值；updateAllColumnById方法，顾名思义，会更新所有的列，没有传值的列会更新为null。</p>
-<h3 id="3、select操作："><a href="#3、select操作：" class="headerlink" title="3、select操作："></a>3、select操作：</h3><h4 id="1-、根据id查询："><a href="#1-、根据id查询：" class="headerlink" title="(1)、根据id查询："></a>(1)、根据id查询：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Employee employee = emplopyeeDao.selectById(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="2-、根据条件查询一条数据："><a href="#2-、根据条件查询一条数据：" class="headerlink" title="(2)、根据条件查询一条数据："></a>(2)、根据条件查询一条数据：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Employee employeeCondition = <span class="keyword">new</span> Employee();</span><br><span class="line">employeeCondition.setId(<span class="number">1</span>);</span><br><span class="line">employeeCondition.setLastName(<span class="string">"更新测试"</span>);</span><br><span class="line"><span class="comment">//若是数据库中符合传入的条件的记录有多条，那就不能用这个方法，会报错</span></span><br><span class="line">Employee employee = emplopyeeDao.selectOne(employeeCondition);</span><br></pre></td></tr></table></figure>
-<p>注：这个方法的sql语句就是where id = 1 and last_name = 更新测试，若是符合这个条件的记录不止一条，那么就会报错。</p>
-<h4 id="3-、根据查询条件返回多条数据："><a href="#3-、根据查询条件返回多条数据：" class="headerlink" title="(3)、根据查询条件返回多条数据："></a>(3)、根据查询条件返回多条数据：</h4><p><strong>当符合指定条件的记录数有多条时，上面那个方法就会报错，就应该用这个方法。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Object&gt; columnMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">columnMap.put(<span class="string">"last_name"</span>,<span class="string">"东方不败"</span>);<span class="comment">//写表中的列名</span></span><br><span class="line">columnMap.put(<span class="string">"gender"</span>,<span class="string">"1"</span>);</span><br><span class="line">List&lt;Employee&gt; employees = emplopyeeDao.selectByMap(columnMap);</span><br><span class="line">System.out.println(employees.size());</span><br></pre></td></tr></table></figure>
-<p>注：查询条件用map集合封装，columnMap，写的是数据表中的列名，而非实体类的属性名。比如属性名为lastName，数据表中字段为last_name，这里应该写的是last_name。selectByMap方法返回值用list集合接收。</p>
-<h4 id="4-、通过id批量查询："><a href="#4-、通过id批量查询：" class="headerlink" title="(4)、通过id批量查询："></a>(4)、通过id批量查询：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; idList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">idList.add(<span class="number">1</span>);</span><br><span class="line">idList.add(<span class="number">2</span>);</span><br><span class="line">idList.add(<span class="number">3</span>);</span><br><span class="line">List&lt;Employee&gt; employees = emplopyeeDao.selectBatchIds(idList);</span><br><span class="line">System.out.println(employees);</span><br></pre></td></tr></table></figure>
-<p>注：把需要查询的id都add到list集合中，然后调用selectBatchIds方法，传入该list集合即可，该方法返回的是对应id的所有记录，所有返回值也是用list接收。</p>
-<h4 id="5-、分页查询："><a href="#5-、分页查询：" class="headerlink" title="(5)、分页查询："></a>(5)、分页查询：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = emplopyeeDao.selectPage(<span class="keyword">new</span> Page&lt;&gt;(<span class="number">1</span>,<span class="number">2</span>),<span class="keyword">null</span>);</span><br><span class="line">System.out.println(employees);</span><br></pre></td></tr></table></figure>
-<p>注：selectPage方法就是分页查询，在page中传入分页信息，后者为null的分页条件，这里先让其为null，讲了条件构造器再说其用法。这个分页其实并不是物理分页，而是内存分页。也就是说，查询的时候并没有limit语句。等配置了分页插件后才可以实现真正的分页。</p>
-<h3 id="4、delete操作："><a href="#4、delete操作：" class="headerlink" title="4、delete操作："></a>4、delete操作：</h3><h4 id="1-、根据id删除："><a href="#1-、根据id删除：" class="headerlink" title="(1)、根据id删除："></a>(1)、根据id删除：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emplopyeeDao.deleteById(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="2-、根据条件删除："><a href="#2-、根据条件删除：" class="headerlink" title="(2)、根据条件删除："></a>(2)、根据条件删除：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Object&gt; columnMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">columnMap.put(<span class="string">"gender"</span>,<span class="number">0</span>);</span><br><span class="line">columnMap.put(<span class="string">"age"</span>,<span class="number">18</span>);</span><br><span class="line">emplopyeeDao.deleteByMap(columnMap);</span><br></pre></td></tr></table></figure>
-<p>注：该方法与selectByMap类似，将条件封装在columnMap中，然后调用deleteByMap方法，传入columnMap即可，返回值是Integer类型，表示影响的行数。</p>
-<h4 id="3-、根据id批量删除："><a href="#3-、根据id批量删除：" class="headerlink" title="(3)、根据id批量删除："></a>(3)、根据id批量删除：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; idList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">idList.add(<span class="number">1</span>);</span><br><span class="line">idList.add(<span class="number">2</span>);</span><br><span class="line">emplopyeeDao.deleteBatchIds(idList);</span><br></pre></td></tr></table></figure>
-<p>注：该方法和selectBatchIds类似，把需要删除的记录的id装进idList，然后调用deleteBatchIds，传入idList即可。</p>
-<h2 id="四、全局策略配置："><a href="#四、全局策略配置：" class="headerlink" title="四、全局策略配置："></a>四、全局策略配置：</h2><p>通过上面的小案例我们可以发现，实体类需要加@TableName注解指定数据库表名，通过@TableId注解指定id的增长策略。实体类少倒也无所谓，实体类一多的话也麻烦。所以可以在spring-dao.xml的文件中进行全局策略配置。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 5、mybatisplus的全局策略配置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"globalConfiguration"</span> <span class="attr">class</span>=<span class="string">"com.baomidou.mybatisplus.entity.GlobalConfiguration"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 2.3版本后，驼峰命名默认值就是true，所以可不配置 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;property name="dbColumnUnderline" value="true"/&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 全局主键自增策略，0表示auto --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"idType"</span> <span class="attr">value</span>=<span class="string">"0"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 全局表前缀配置 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"tablePrefix"</span> <span class="attr">value</span>=<span class="string">"tb_"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里配置了还没用，还需要在sqlSessionFactory中注入配置才会生效。如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 3、配置mybatisplus的sqlSessionFactory --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactory"</span> <span class="attr">class</span>=<span class="string">"com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span> <span class="attr">value</span>=<span class="string">"classpath:mybatis-config.xml"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"typeAliasesPackage"</span> <span class="attr">value</span>=<span class="string">"com.zhu.mybatisplus.entity"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 注入全局配置 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"globalConfig"</span> <span class="attr">ref</span>=<span class="string">"globalConfiguration"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如此一来，实体类中的@TableName注解和@TableId注解就可以去掉了。</p>
-<h2 id="五、条件构造器-EntityWrapper-："><a href="#五、条件构造器-EntityWrapper-：" class="headerlink" title="五、条件构造器(EntityWrapper)："></a>五、条件构造器(EntityWrapper)：</h2><p>以上基本的 CRUD 操作，我们仅仅需要继承一个 BaseMapper 即可实现大部分单表 CRUD 操作。BaseMapper 提供了多达 17 个方法供使用, 可以极其方便的实现单一、批量、分页等操作，极大的减少开发负担。但是mybatis-plus的强大不限于此，请看如下需求该如何处理：<br><strong>需求：</strong><br>我们需要分页查询 tb_employee 表中，年龄在 18~50 之间性别为男且姓名为 xx 的所有用户，这时候我们该如何实现上述需求呢？<br><strong>使用MyBatis :</strong> 需要在 SQL 映射文件中编写带条件查询的 SQL,并用PageHelper 插件完成分页. 实现以上一个简单的需求，往往需要我们做很多重复单调的工作。<br><strong>使用MP:</strong> 依旧不用编写 SQL 语句，MP 提供了功能强大的条件构造器 —— EntityWrapper。</p>
-<p>接下来就直接看几个案例体会EntityWrapper的使用。</p>
-<h3 id="1、分页查询年龄在18-50且gender为0、姓名为tom的用户："><a href="#1、分页查询年龄在18-50且gender为0、姓名为tom的用户：" class="headerlink" title="1、分页查询年龄在18 - 50且gender为0、姓名为tom的用户："></a>1、分页查询年龄在18 - 50且gender为0、姓名为tom的用户：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = emplopyeeDao.selectPage(<span class="keyword">new</span> Page&lt;Employee&gt;(<span class="number">1</span>,<span class="number">3</span>),</span><br><span class="line">     <span class="keyword">new</span> EntityWrapper&lt;Employee&gt;()</span><br><span class="line">        .between(<span class="string">"age"</span>,<span class="number">18</span>,<span class="number">50</span>)</span><br><span class="line">        .eq(<span class="string">"gender"</span>,<span class="number">0</span>)</span><br><span class="line">        .eq(<span class="string">"last_name"</span>,<span class="string">"tom"</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>注：由此案例可知，分页查询和之前一样，new 一个page对象传入分页信息即可。至于分页条件，new 一个EntityWrapper对象，调用该对象的相关方法即可。between方法三个参数，分别是column、value1、value2，该方法表示column的值要在value1和value2之间；eq是equals的简写，该方法两个参数，column和value，表示column的值和value要相等。注意column是数据表对应的字段，而非实体类属性字段。</p>
-<h3 id="2、查询gender为0且名字中带有老师、或者邮箱中带有a的用户："><a href="#2、查询gender为0且名字中带有老师、或者邮箱中带有a的用户：" class="headerlink" title="2、查询gender为0且名字中带有老师、或者邮箱中带有a的用户："></a>2、查询gender为0且名字中带有老师、或者邮箱中带有a的用户：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = emplopyeeDao.selectList(</span><br><span class="line">                <span class="keyword">new</span> EntityWrapper&lt;Employee&gt;()</span><br><span class="line">               .eq(<span class="string">"gender"</span>,<span class="number">0</span>)</span><br><span class="line">               .like(<span class="string">"last_name"</span>,<span class="string">"老师"</span>)</span><br><span class="line">                <span class="comment">//.or()//和or new 区别不大</span></span><br><span class="line">               .orNew()</span><br><span class="line">               .like(<span class="string">"email"</span>,<span class="string">"a"</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>注：未说分页查询，所以用selectList即可，用EntityWrapper的like方法进行模糊查询，like方法就是指column的值包含value值，此处like方法就是查询last_name中包含“老师”字样的记录；“或者”用or或者orNew方法表示，这两个方法区别不大，用哪个都可以，可以通过控制台的sql语句自行感受其区别。</p>
-<h3 id="3、查询gender为0，根据age排序，简单分页："><a href="#3、查询gender为0，根据age排序，简单分页：" class="headerlink" title="3、查询gender为0，根据age排序，简单分页："></a>3、查询gender为0，根据age排序，简单分页：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = emplopyeeDao.selectList(</span><br><span class="line">                <span class="keyword">new</span> EntityWrapper&lt;Employee&gt;()</span><br><span class="line">                .eq(<span class="string">"gender"</span>,<span class="number">0</span>)</span><br><span class="line">                .orderBy(<span class="string">"age"</span>)<span class="comment">//直接orderby 是升序，asc</span></span><br><span class="line">                .last(<span class="string">"desc limit 1,3"</span>)<span class="comment">//在sql语句后面追加last里面的内容(改为降序，同时分页)</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>注：简单分页是指不用page对象进行分页。orderBy方法就是根据传入的column进行升序排序，若要降序，可以使用orderByDesc方法，也可以如案例中所示用last方法；last方法就是将last方法里面的value值追加到sql语句的后面，在该案例中，最后的sql语句就变为select ······ order by desc limit 1, 3，追加了desc limit 1,3所以可以进行降序排序和分页。</p>
-<h3 id="4、分页查询年龄在18-50且gender为0、姓名为tom的用户："><a href="#4、分页查询年龄在18-50且gender为0、姓名为tom的用户：" class="headerlink" title="4、分页查询年龄在18 - 50且gender为0、姓名为tom的用户："></a>4、分页查询年龄在18 - 50且gender为0、姓名为tom的用户：</h3><p>条件构造器除了EntityWrapper，还有Condition。用Condition来处理一下这个需求：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = emplopyeeDao.selectPage(</span><br><span class="line">               <span class="keyword">new</span> Page&lt;Employee&gt;(<span class="number">1</span>,<span class="number">2</span>),</span><br><span class="line">               Condition.create()</span><br><span class="line">                       .between(<span class="string">"age"</span>,<span class="number">18</span>,<span class="number">50</span>)</span><br><span class="line">                       .eq(<span class="string">"gender"</span>,<span class="string">"0"</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>注：Condition和EntityWrapper的区别就是，创建条件构造器时，EntityWrapper是new出来的，而Condition是调create方法创建出来。</p>
-<h3 id="5、根据条件更新："><a href="#5、根据条件更新：" class="headerlink" title="5、根据条件更新："></a>5、根据条件更新：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEntityWrapperUpdate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">        employee.setLastName(<span class="string">"苍老师"</span>);</span><br><span class="line">        employee.setEmail(<span class="string">"cjk@sina.com"</span>);</span><br><span class="line">        employee.setGender(<span class="number">0</span>);</span><br><span class="line">        emplopyeeDao.update(employee,</span><br><span class="line">                <span class="keyword">new</span> EntityWrapper&lt;Employee&gt;()</span><br><span class="line">                .eq(<span class="string">"last_name"</span>,<span class="string">"tom"</span>)</span><br><span class="line">                .eq(<span class="string">"age"</span>,<span class="number">25</span>)</span><br><span class="line">        );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注：该案例表示把last_name为tom，age为25的所有用户的信息更新为employee中设置的信息。</p>
-<h3 id="6、根据条件删除："><a href="#6、根据条件删除：" class="headerlink" title="6、根据条件删除："></a>6、根据条件删除：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">emplopyeeDao.delete(</span><br><span class="line">        <span class="keyword">new</span> EntityWrapper&lt;Employee&gt;()</span><br><span class="line">        .eq(<span class="string">"last_name"</span>,<span class="string">"tom"</span>)</span><br><span class="line">        .eq(<span class="string">"age"</span>,<span class="number">16</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>注：该案例表示把last_name为tom、age为16的所有用户删除。</p>
-<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>以上便是mybatis-plus的入门教程，介绍了其如何与spring整合、通用crud的使用、全局策略的配置以及条件构造器的使用，但是这并不是MP的所有内容，其强大不限于此。避免篇幅过长，想了解mybatis-plus的更多用法请参考《mybatis-plus的使用 —— 进阶》，同时在文末会给出案例的源码。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/13/MybatisPlus/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-  
-    <a href="/2019/10/11/SpringBoot%E6%95%B4%E5%90%88Shiro/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">&#39;SpringBoot整合Shiro&#39;</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/22/Redis%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+  	<time datetime="2019-09-22T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/09/22/Redis%E7%AE%80%E4%BB%8B/">&#39;Redis简介&#39;</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -375,8 +235,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
