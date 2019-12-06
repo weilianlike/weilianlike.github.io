@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/8 | 马衍研个人博客</title>
+  <title>&#39;负载均衡算法&#39; | 马衍研个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="马衍研个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;08&#x2F;index.html">
+  <meta name="description" content="负载均衡算法自定义一:更改ribbon负载均衡为随机 缺省为轮询1.1.在启动该微服务的时候就能去加载我们的自定义Ribbon配置类，从而使配置生效，形如：@RibbonClient(name=&amp;quot;MICROSERVICECLOUD-DEPT&amp;quot;,configuration=MySelfRule.class) 2.主启动类添加@RibbonClient 官方文档明确给出了警告：2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;负载均衡算法&#39;">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;15&#x2F;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="马衍研个人博客">
+<meta property="og:description" content="负载均衡算法自定义一:更改ribbon负载均衡为随机 缺省为轮询1.1.在启动该微服务的时候就能去加载我们的自定义Ribbon配置类，从而使配置生效，形如：@RibbonClient(name=&amp;quot;MICROSERVICECLOUD-DEPT&amp;quot;,configuration=MySelfRule.class) 2.主启动类添加@RibbonClient 官方文档明确给出了警告：2.">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-06T07:54:01.977Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="马衍研个人博客" type="application/atom+xml">
@@ -143,76 +146,171 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-负载均衡算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/15/SpringCloud%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2019-08-15T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/15/SpringCloud%E7%AE%80%E4%BB%8B/">&#39;SpringCould简介&#39;</a>
+    <h1 class="article-title" itemprop="name">
+      &#39;负载均衡算法&#39;
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/SpringBoot%E6%95%B4%E5%90%88Shiro/" class="archive-article-date">
-  	<time datetime="2019-08-11T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
+        
+        <a href="/2019/10/15/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-10-15T02:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-15</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/SpringBoot%E6%95%B4%E5%90%88Shiro/">&#39;SpringBoot整合Shiro&#39;</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="负载均衡算法自定义"><a href="#负载均衡算法自定义" class="headerlink" title="负载均衡算法自定义"></a>负载均衡算法自定义</h1><h2 id="一-更改ribbon负载均衡为随机-缺省为轮询"><a href="#一-更改ribbon负载均衡为随机-缺省为轮询" class="headerlink" title="一:更改ribbon负载均衡为随机 缺省为轮询"></a>一:更改ribbon负载均衡为随机 缺省为轮询</h2><h3 id="1-1-在启动该微服务的时候就能去加载我们的自定义Ribbon配置类，从而使配置生效，形如："><a href="#1-1-在启动该微服务的时候就能去加载我们的自定义Ribbon配置类，从而使配置生效，形如：" class="headerlink" title="1.1.在启动该微服务的时候就能去加载我们的自定义Ribbon配置类，从而使配置生效，形如："></a>1.1.在启动该微服务的时候就能去加载我们的自定义Ribbon配置类，从而使配置生效，形如：</h3><p><code>@RibbonClient(name=&quot;MICROSERVICECLOUD-DEPT&quot;,configuration=MySelfRule.class)</code></p>
+<h3 id="2-主启动类添加-RibbonClient-官方文档明确给出了警告：2-主启动类添加-RibbonClient-官方文档明确给出了警告："><a href="#2-主启动类添加-RibbonClient-官方文档明确给出了警告：2-主启动类添加-RibbonClient-官方文档明确给出了警告：" class="headerlink" title="2.主启动类添加@RibbonClient 官方文档明确给出了警告：2.主启动类添加@RibbonClient 官方文档明确给出了警告："></a>2.主启动类添加@RibbonClient 官方文档明确给出了警告：2.主启动类添加@RibbonClient 官方文档明确给出了警告：</h3><p>这个自定义配置类不能放在<code>@ComponentScan</code>所扫描的当前包下以及子包下，<br>否则我们自定义的这个配置类就会被所有的Ribbon客户端所共享，也就是说<br>我们达不到特殊化定制的目的了。</p>
+<h3 id="3-新建"><a href="#3-新建" class="headerlink" title="3.新建"></a>3.新建</h3><pre><code>package com.study.myrule</code></pre><h4 id="1-新建自定义Robbin规则类"><a href="#1-新建自定义Robbin规则类" class="headerlink" title="(1)新建自定义Robbin规则类"></a>(1)新建自定义Robbin规则类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.study.myrule;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.IRule;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.RandomRule;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySelfRule</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> IRule <span class="title">myRule</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> RandomRule();<span class="comment">//Ribbon默认是轮询，我自定义为随机</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;``</span><br></pre></td></tr></table></figure>
+<h4 id="2-修改主启动类"><a href="#2-修改主启动类" class="headerlink" title="(2)修改主启动类"></a>(2)修改主启动类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.study.springcloud;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.eureka.EnableEurekaClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.ribbon.RibbonClient;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> com.atguigu.myrule.MySelfRule;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@RibbonClient</span>(name=<span class="string">"MICROSERVICECLOUD-DEPT"</span>,configuration=MySelfRule<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">DeptConsumer80_App</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">   SpringApplication.run(DeptConsumer80_App<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="二-自定义负载均衡规则深度解析"><a href="#二-自定义负载均衡规则深度解析" class="headerlink" title="二:自定义负载均衡规则深度解析"></a>二:自定义负载均衡规则深度解析</h1><h2 id="问题：依旧轮询策略，但是加上新需求，每个服务器要求被调用5次。也即以前是每台机器一次，现在是每台机器5次"><a href="#问题：依旧轮询策略，但是加上新需求，每个服务器要求被调用5次。也即以前是每台机器一次，现在是每台机器5次" class="headerlink" title="问题：依旧轮询策略，但是加上新需求，每个服务器要求被调用5次。也即以前是每台机器一次，现在是每台机器5次"></a>问题：依旧轮询策略，但是加上新需求，每个服务器要求被调用5次。也即以前是每台机器一次，现在是每台机器5次</h2><h3 id="1-参考源码修改为我们需求要求的RandomRule-ZY-java"><a href="#1-参考源码修改为我们需求要求的RandomRule-ZY-java" class="headerlink" title="1.参考源码修改为我们需求要求的RandomRule_ZY.java"></a>1.参考源码修改为我们需求要求的RandomRule_ZY.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="keyword">package</span> com.study.myrule;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> com.netflix.client.config.IClientConfig;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.AbstractLoadBalancerRule;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.ILoadBalancer;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.Server;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 自定义负载均衡算法</span></span><br><span class="line"><span class="comment"> * 每个服务器调五次</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomRule_ZY</span> <span class="keyword">extends</span> <span class="title">AbstractLoadBalancerRule</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// total = 0 //当total = 5 以后 我们指针才能往下走</span></span><br><span class="line">	<span class="comment">//index = 0  //当前对外提供服务的服务器地址</span></span><br><span class="line">		<span class="comment">//total 需要重置归为0,但是已经达到过一个5次,所以我们index(服务器) = 1</span></span><br><span class="line">			<span class="comment">// 当index大于3,重置归0  因为我们只有三台服务器</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> total = <span class="number">0</span>;    <span class="comment">//总共被调用的次数，目前要求每台被调用5次</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> currentIndex = <span class="number">0</span>;<span class="comment">//当前提供服务的机器号</span></span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Server <span class="title">choose</span><span class="params">(ILoadBalancer lb, Object key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lb == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Server server = <span class="keyword">null</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span> (server == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Thread.interrupted()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            List&lt;Server&gt; upList = lb.getReachableServers();</span><br><span class="line">            List&lt;Server&gt; allList = lb.getAllServers();</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">int</span> serverCount = allList.size();</span><br><span class="line">            <span class="keyword">if</span> (serverCount == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                 * No servers. End regardless of pass, because subsequent passes</span></span><br><span class="line"><span class="comment">                 * only get more restrictive.</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            </span><br><span class="line"><span class="comment">//            int index = rand.nextInt(serverCount);</span></span><br><span class="line"><span class="comment">//            server = upList.get(index);</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * </span></span><br><span class="line"><span class="comment">             * </span></span><br><span class="line"><span class="comment">             * */</span></span><br><span class="line">            <span class="keyword">if</span>(total &lt; <span class="number">5</span>)</span><br><span class="line">            &#123;</span><br><span class="line">            server = upList.get(currentIndex);<span class="comment">//当前server是0号机</span></span><br><span class="line">            total++;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            total = <span class="number">0</span>;</span><br><span class="line">            currentIndex++;</span><br><span class="line">            <span class="keyword">if</span>(currentIndex &gt;= upList.size())<span class="comment">//服务机是否大于服务机数</span></span><br><span class="line">            &#123;</span><br><span class="line">              currentIndex = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span> (server == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                 * The only time this should happen is if the server list were</span></span><br><span class="line"><span class="comment">                 * somehow trimmed. This is a transient condition. Retry after</span></span><br><span class="line"><span class="comment">                 * yielding.</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                Thread.yield();</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span> (server.isAlive()) &#123;</span><br><span class="line">                <span class="keyword">return</span> (server);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            <span class="comment">// Shouldn't actually happen.. but must be transient or a bug.</span></span><br><span class="line">            server = <span class="keyword">null</span>;</span><br><span class="line">            Thread.yield();</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> server;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Server <span class="title">choose</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> choose(getLoadBalancer(), key);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initWithNiwsConfig</span><span class="params">(IClientConfig clientConfig)</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-MySelfRule-java"><a href="#2-MySelfRule-java" class="headerlink" title="2.MySelfRule.java"></a>2.MySelfRule.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.study.myrule;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.IRule;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.RandomRule;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySelfRule</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> IRule <span class="title">myRule</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">   <span class="comment">//return new RandomRule();//Ribbon默认是轮询，我自定义为随机</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> RandomRule_ZY();<span class="comment">//我自定义为每个机器被访问5次</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-主启动类"><a href="#3-主启动类" class="headerlink" title="3.主启动类"></a>3.主启动类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.study.springcloud;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.eureka.EnableEurekaClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.ribbon.RibbonClient;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.atguigu.myrule.MySelfRule;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="comment">//在启动该微服务的时候就能去加载我们的自定义Ribbon配置类，从而使配置生效</span></span><br><span class="line"><span class="meta">@RibbonClient</span>(name=<span class="string">"MICROSERVICECLOUD-DEPT"</span>,configuration=MySelfRule<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">DeptConsumer80_App</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">   SpringApplication.run(DeptConsumer80_App<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-测试地址-http-localhost-consumer-dept-list"><a href="#4-测试地址-http-localhost-consumer-dept-list" class="headerlink" title="4.测试地址:http://localhost/consumer/dept/list"></a>4.测试地址:<a href="http://localhost/consumer/dept/list" target="_blank" rel="noopener">http://localhost/consumer/dept/list</a></h3>
+      
 
-        <div class="article-info info-on-right">
-          
-          
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/15/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/10/15/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          &#39;跨域问题&#39;
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/10/13/MybatisPlus%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%B8%8Espring%E6%95%B4%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">&#39;MybatisPlus简介&#39;</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -235,8 +333,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
