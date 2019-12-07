@@ -145,6 +145,121 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-打印指定html内容" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/07/%E6%89%93%E5%8D%B0%E6%8C%87%E5%AE%9Ahtml%E5%86%85%E5%AE%B9/">&#39;打印html指定内容&#39;</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/07/%E6%89%93%E5%8D%B0%E6%8C%87%E5%AE%9Ahtml%E5%86%85%E5%AE%B9/" class="archive-article-date">
+  	<time datetime="2019-12-07T05:20:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&lt;%@ page language=”java” contentType=”text/html; charset=UTF-8”<br>    pageEncoding=”UTF-8”%&gt;<br>&lt;%@include file=”/WEB-INF/jsp/common/tag.jsp”%&gt;</p>
+<script type="text/javascript">   
+
+
+//打印选区内容  包含在 对应标识里面的内容为打印内容
+    function printit() {
+        bdhtml=window.document.body.innerHTML; //获取当前页的html代码
+        sprnstr="<!--startprint-->"; //设置打印开始区域 
+        eprnstr="<!--endprint-->";  //设置打印结束区域 
+        prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17);  //从开始代码向后取html 
+        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));  //从结束代码向前取html 
+        window.document.body.innerHTML=prnhtml;
+        window.print();
+        window.document.body.innerHTML=bdhtml;    //还原页面
+    }
+
+
+
+</script>
+
+<div class="easyui-layout" data-options="fit:true,border:false">
+    <div data-options="region:'center',title:'粘贴单打印'">
+        <div class="datagrid-toolbar">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" id="lsbackBtn" class="easyui-linkbutton" iconcls="icon-redo" plain="true" onclick="comeback('${patient.zyh }')">返回</a> <input value="打印" type="button" onclick="javascript:printit();">
+        </div>
+        <!--startprint-->
+        <h1 align="center">${sydw }</h1>
+        <h2 align="center">粘 贴 单</h2>
+
+
+<pre><code>&lt;table border=&quot;1&quot; width=&quot;63%&quot; align=&quot;center&quot; cellspacing=&quot;0&quot;
+    style=&quot;border-collapse: collapse; height: 849px; width: 686px&quot;
+    cellpadding=&quot;5&quot;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;table border=&quot;0&quot; width=&quot;100%&quot; style=&quot;width: 629px; &quot;&gt;
+                &lt;tr&gt;
+                    &lt;td align=&quot;left&quot;&gt;姓名：&lt;/td&gt;
+                    &lt;td&gt;${patient.xm }&lt;/td&gt;
+                    &lt;td  align=&quot;left&quot;&gt;科室：&lt;/td&gt;
+                    &lt;td&gt;${patient.dqksmc }&lt;/td&gt;
+                    &lt;td  align=&quot;left&quot;&gt;住院号：&lt;/td&gt;
+                    &lt;td&gt;${patient.zyh }&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&quot;height: 755px; width: 671px&quot;&gt;&lt;table border=&quot;0&quot;
+                width=&quot;100%&quot;&gt;
+
+            &lt;/table&gt;&lt;/td&gt;
+            &lt;!--endprint--&gt;
+    &lt;/tr&gt;</code></pre></div></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/07/%E6%89%93%E5%8D%B0%E6%8C%87%E5%AE%9Ahtml%E5%86%85%E5%AE%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-跨域问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
