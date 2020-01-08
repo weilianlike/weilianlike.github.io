@@ -149,6 +149,149 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-我踩过的docker的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/08/%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84docker%E7%9A%84%E5%9D%91/">我踩过的docker的坑</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/08/%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84docker%E7%9A%84%E5%9D%91/" class="archive-article-date">
+  	<time datetime="2020-01-08T06:42:17.851Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: ‘’’我踩过的docker的坑’’’</p>
+<p>date: 2019-12-28 16:52:46<br>tags:<br>第一回安装docker的linux系统一直安装docker失败,最后用的阿里云镜像的centos 7才成功<br>docker启动es时最好加上限制内存,es默认使用内存4g,一下子把内存都给占满了,其实1g就够了<br>docker启动rabbitmq时,显示已启动,但是本机访问不到,应该是下载镜像的时候没下载带管理界面的rabbitmq<br>docker search 镜像名   –查找镜像<br>docker pull 镜像名   –拉取镜像<br>docker images   –查看所有镜像<br>docker ps      –查看已运行容器<br>docker ps -a  –查看所有容器<br>docker restart 容器别名  –启动容器</p>
+<p>删除镜像的坑<br>删除镜像前要先删除容器<br>docker ps -a  –查看所有容器<br>docker rm (CONTAINER ID) –根据CONTAINER ID删除容器<br>docker rmi 镜像id –根据CONTAINER ID删除镜像</p>
+<h1 id="重头戏-docker部署springboot项目"><a href="#重头戏-docker部署springboot项目" class="headerlink" title="重头戏:docker部署springboot项目"></a>重头戏:docker部署springboot项目</h1><h2 id="1-在springboot项目的pom-xml文件中添加Docker镜像名称："><a href="#1-在springboot项目的pom-xml文件中添加Docker镜像名称：" class="headerlink" title="1.在springboot项目的pom.xml文件中添加Docker镜像名称："></a>1.在springboot项目的pom.xml文件中添加Docker镜像名称：</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">docker.image.prefix</span>&gt;</span>springboot<span class="tag">&lt;/<span class="name">docker.image.prefix</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-在plugin中添加docker构建插件："><a href="#2-在plugin中添加docker构建插件：" class="headerlink" title="2.在plugin中添加docker构建插件："></a>2.在plugin中添加docker构建插件：</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Docker maven plugin --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>src/main/docker<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Docker maven plugin --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-接着使用maven-install（可以使用maven命令行，也可以使用ide自带的maven）打包，创建Dockerfile文件，Dockerfile相当于说明书，告诉docker容器应该如何运行项目，规定项目运行的一些规则："><a href="#3-接着使用maven-install（可以使用maven命令行，也可以使用ide自带的maven）打包，创建Dockerfile文件，Dockerfile相当于说明书，告诉docker容器应该如何运行项目，规定项目运行的一些规则：" class="headerlink" title="3.接着使用maven install（可以使用maven命令行，也可以使用ide自带的maven）打包，创建Dockerfile文件，Dockerfile相当于说明书，告诉docker容器应该如何运行项目，规定项目运行的一些规则："></a>3.接着使用maven install（可以使用maven命令行，也可以使用ide自带的maven）打包，创建Dockerfile文件，Dockerfile相当于说明书，告诉docker容器应该如何运行项目，规定项目运行的一些规则：</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># Docker image for springboot file run</span><br><span class="line"># VERSION 0.0.1</span><br><span class="line"># Author: eangulee</span><br><span class="line"># 基础镜像使用java</span><br><span class="line">FROM java:8</span><br><span class="line"># 作者</span><br><span class="line">MAINTAINER eangulee <span class="tag">&lt;<span class="name">eangulee@gmail.com</span>&gt;</span></span><br><span class="line"># VOLUME 指定了临时文件目录为/tmp。</span><br><span class="line"># 其效果是在主机 /var/lib/docker 目录下创建了一个临时文件，并链接到容器的/tmp</span><br><span class="line">VOLUME /tmp </span><br><span class="line"># 将jar包添加到容器中并更名为app.jar</span><br><span class="line">ADD demo-0.0.1-SNAPSHOT.jar app.jar </span><br><span class="line"># 运行jar包</span><br><span class="line">RUN bash -c 'touch /app.jar'</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"</span><br></pre></td></tr></table></figure>
+<h3 id="解释下这个配置文件："><a href="#解释下这个配置文件：" class="headerlink" title="解释下这个配置文件："></a>解释下这个配置文件：</h3><p><strong>VOLUME</strong> 指定了临时文件目录为/tmp。其效果是在主机 /var/lib/docker 目录下创建了一个临时文件，并链接到容器的/tmp。改步骤是可选的，如果涉及到文件系统的应用就很有必要了。/tmp目录用来持久化到 Docker 数据文件夹，因为 Spring Boot 使用的内嵌 Tomcat 容器默认使用/tmp作为工作目录<br>项目的 jar 文件作为 “app.jar” 添加到容器的<br><strong>ENTRYPOINT</strong> 执行项目 app.jar。为了缩短 Tomcat 启动时间，添加一个系统属性指向 “/dev/./urandom” 作为 Entropy Source</p>
+<p>如果是第一次打包，它会自动下载java 8的镜像作为基础镜像，以后再制作镜像的时候就不会再下载了。</p>
+<h3 id="4-部署文件"><a href="#4-部署文件" class="headerlink" title="4.部署文件"></a>4.部署文件</h3><h4 id="1-创建docker文件夹，将jar包与Dockerfile移动到该文件夹，进入该文件夹，运行命令："><a href="#1-创建docker文件夹，将jar包与Dockerfile移动到该文件夹，进入该文件夹，运行命令：" class="headerlink" title="(1)创建docker文件夹，将jar包与Dockerfile移动到该文件夹，进入该文件夹，运行命令："></a>(1)创建docker文件夹，将jar包与Dockerfile移动到该文件夹，进入该文件夹，运行命令：</h4><p><code>docker build -t docker  .</code></p>
+<h4 id="2-此时会将该项目构建成一个image（镜像），运行该命令-查看构建镜像："><a href="#2-此时会将该项目构建成一个image（镜像），运行该命令-查看构建镜像：" class="headerlink" title="(2)此时会将该项目构建成一个image（镜像），运行该命令,查看构建镜像："></a>(2)此时会将该项目构建成一个image（镜像），运行该命令,查看构建镜像：</h4><p><code>docker images</code></p>
+<h4 id="3-运行镜像："><a href="#3-运行镜像：" class="headerlink" title="(3)运行镜像："></a>(3)运行镜像：</h4><p><code>docker run -p 8080:8080 -d docker</code><br>-p表示端口映射，冒号左边为docker容器外的端口号，右边为容器内的端口号，-d表示后台运行 docker表示REPOSITORY的值</p>
+<h4 id="4-查看运行镜像"><a href="#4-查看运行镜像" class="headerlink" title="(4)查看运行镜像"></a>(4)查看运行镜像</h4><p>运行命令：</p>
+<p><code>docker ps</code><br>可以查看运行的镜像<br>至此，springboot项目部署完毕，由于我的项目需要使用mysql，即使我们在本机上安装了mysql，springboot项目是无法访问的，因为docker中运行的项目与本机是两套完全不同的环境，因此如果想要访问，可以在docker中部署mysql，也可以将项目的jdbc的url中的localhost改为本机的IP地址</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/08/%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84docker%E7%9A%84%E5%9D%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-IDEA闪退问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/08/IDEA%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/">&#39;IDEA闪退问题&#39;</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/08/IDEA%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-01-08T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天敲代码的时候,遇见idea闪退问题,试了网上的许多办法,把下载的插件都删除,重启后依然闪退,又试了试把idea的内存调大,依旧不行,本想卸了重装,试了最后一个办法,终于解决了,原因是idea默认启动32位,我本机是64的,所以要用64位启动,太坑了吧!!!</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/08/IDEA%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-高并发与分布式下的幂等问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1040,174 +1183,10 @@ public SecurityManager securityManager(CustomRealm customRealm) {
 
 
   
-    <article id="post-SpringBoot整合Redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/SpringBoot%E6%95%B4%E5%90%88Redis/">&#39;SpringBoot整合redis&#39;</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/15/SpringBoot%E6%95%B4%E5%90%88Redis/" class="archive-article-date">
-  	<time datetime="2019-03-15T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="springboot整合redis"><a href="#springboot整合redis" class="headerlink" title="springboot整合redis"></a>springboot整合redis</h1><h2 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h2><p>Redis-x64-3.2.100.zip<br>SpringBoot 1.5.10.RELEASE<br>Redis-x64-3.2.100.zip 下载地址：<a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener">https://github.com/MicrosoftArchive/redis/releases</a><br>开发工具:idea</p>
-<p><strong>pom依赖：</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="二：application-yml："><a href="#二：application-yml：" class="headerlink" title="二：application.yml："></a>二：application.yml：</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">redis:</span></span><br><span class="line">      <span class="attr">host:</span> <span class="number">120.79</span><span class="number">.82</span><span class="number">.191</span> </span><br><span class="line">      <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">Lysb_TestRedis!2019</span></span><br><span class="line">      <span class="attr">jedis:</span></span><br><span class="line">        <span class="attr">pool:</span></span><br><span class="line">          <span class="attr">max-active:</span> <span class="number">8</span></span><br><span class="line">          <span class="attr">max-wait:</span> <span class="number">-1</span></span><br><span class="line">          <span class="attr">max-idle:</span> <span class="number">500</span></span><br><span class="line">          <span class="attr">min-idle:</span> <span class="number">0</span></span><br><span class="line">      <span class="attr">lettuce:</span></span><br><span class="line">        <span class="attr">shutdown-timeout:</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">datasource:</span></span><br><span class="line">      <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line">      <span class="attr">url:</span> <span class="string">jdbc:mysql://192.168.1.20:3306/test?useSSL=false</span></span><br><span class="line">      <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">root123</span>        </span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="attr">logging.level.com.demo.mapper:</span> <span class="string">debug</span></span><br></pre></td></tr></table></figure>
-<h2 id="三-bean："><a href="#三-bean：" class="headerlink" title="三: bean："></a>三: bean：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.bean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Days</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String openId;</span><br><span class="line">    <span class="keyword">private</span> String daysId;</span><br><span class="line">    <span class="comment">//每天的标题</span></span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="comment">//代办事项的数量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> itemNumber;</span><br><span class="line">    <span class="comment">//日程</span></span><br><span class="line">    <span class="keyword">private</span> String date;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOpenId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> openId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOpenId</span><span class="params">(String openId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.openId = openId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDaysId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> daysId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDaysId</span><span class="params">(String daysId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.daysId = daysId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> title;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> itemNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setItemNumber</span><span class="params">(<span class="keyword">int</span> itemNumber)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.itemNumber = itemNumber;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> date;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDate</span><span class="params">(String date)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Days [openId="</span> + openId + <span class="string">", daysId="</span> + daysId + <span class="string">", title="</span> + title + <span class="string">", itemNumber="</span> + itemNumber</span><br><span class="line">                + <span class="string">", date="</span> + date + <span class="string">"]"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="四-redisconfig："><a href="#四-redisconfig：" class="headerlink" title="四:redisconfig："></a>四:redisconfig：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.redis.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.connection.RedisConnectionFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.core.RedisTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.serializer.StringRedisSerializer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.demo.bean.Days;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisConfig</span></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate&lt;String, Days&gt;redisTemplate(RedisConnectionFactory factory)&#123;</span><br><span class="line">        RedisTemplate&lt;String,Days&gt;template=<span class="keyword">new</span> RedisTemplate&lt;&gt;();</span><br><span class="line">        <span class="comment">//关联</span></span><br><span class="line">        template.setConnectionFactory(factory);</span><br><span class="line">        <span class="comment">//设置key的序列化器</span></span><br><span class="line">        template.setKeySerializer(<span class="keyword">new</span> StringRedisSerializer());</span><br><span class="line">        <span class="comment">//设置value的序列化器</span></span><br><span class="line">        template.setValueSerializer(<span class="keyword">new</span> Jackson2JsonRedisSerializer&lt;&gt;(Days<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="五-redisTest："><a href="#五-redisTest：" class="headerlink" title="五:redisTest："></a>五:redisTest：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.core.RedisTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.demo.bean.Days;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootTest</span></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">RedisTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate&lt;String,Days&gt; redisTemplate;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//注入一个对象缓存在redis</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSet</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Days d=<span class="keyword">new</span> Days();</span><br><span class="line">        d.setDate(<span class="string">"123"</span>);</span><br><span class="line">        d.setDaysId(<span class="string">"456"</span>);</span><br><span class="line">        d.setItemNumber(<span class="number">123</span>);</span><br><span class="line">        d.setOpenId(<span class="string">"dawda"</span>);</span><br><span class="line">        d.setTitle(<span class="string">"title"</span>);</span><br><span class="line">        <span class="keyword">this</span>.redisTemplate.opsForValue().set(<span class="string">"days"</span>,d);</span><br><span class="line">        System.out.println(<span class="string">"redisTemplate=="</span>+(redisTemplate.opsForValue().get(<span class="string">"days"</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>至此,springboot与redis整合完成</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/SpringBoot%E6%95%B4%E5%90%88Redis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-Redis简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/Redis%E7%AE%80%E4%BB%8B/">&#39;Redis简介&#39;</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/22/Redis%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2018-11-22T06:40:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一-redis基本数据类型"><a href="#一-redis基本数据类型" class="headerlink" title="一.redis基本数据类型"></a>一.redis基本数据类型</h1><h2 id="1-String"><a href="#1-String" class="headerlink" title="1.String"></a>1.String</h2><p>(1).保存单个字符串或者json字符串数据<br>(2).String是二进制安全的<br><strong>应用场景:</strong><br>3.计数器(常规key-value缓存应用,微博数,粉丝数)<br>INCR等指令本身就具有原子性的操作</p>
-<h2 id="2-hash"><a href="#2-hash" class="headerlink" title="2.hash"></a>2.hash</h2><p>存储用户对象(内存浪费)</p>
-<h2 id="3-list"><a href="#3-list" class="headerlink" title="3.list"></a>3.list</h2><p>集合 任务队列<br><strong>应用场景</strong>: 订单系统的下单流程  用户系统登录注册短信</p>
-<h2 id="4-set"><a href="#4-set" class="headerlink" title="4.set"></a>4.set</h2><p>集合 不重复<br><strong>应用场景:</strong><br>  共同关注  共同喜好 共同好友 统计网站所有独立ip 用户注册时的同名验证</p>
-<h2 id="5-zset"><a href="#5-zset" class="headerlink" title="5.zset"></a>5.zset</h2><p>有序集合 不重复<br><strong>应用场景:</strong><br>排行榜 发布订阅 限时聊天 群聊功能 微信公众号 缓存预热 </p>
-<h1 id="二-redis事物-应用场景-商品秒杀-转账"><a href="#二-redis事物-应用场景-商品秒杀-转账" class="headerlink" title="二.redis事物:应用场景 (商品秒杀,转账)"></a>二.redis事物:应用场景 (商品秒杀,转账)</h1><p>redis命令具有原子性 事物不具有原子性</p>
-<p>1.会将一个事物中的所有命令序列化,然后按顺序执行<br>2.执行中不会被其他命令插入 不许出现加赛行为<br>输入multi命令表示事物开始 里面输入命令 依次执行 输入exec开始执行 命令输错 discard取消事物执行</p>
-<h2 id="事物的错误处理"><a href="#事物的错误处理" class="headerlink" title="事物的错误处理:"></a>事物的错误处理:</h2><p>如果事物中的某个命令出现了错误,只有报错的命令不会执行,而其他命令都会执行且不会回滚</p>
-<p>如果队列中的某个命令出现了报告错误,执行时整个的所有队列都会被取消</p>
-<p>watch监视key 事物执行完成后 自己取消<br>unwatch 取消监视</p>
-<h1 id="三-redis淘汰机制"><a href="#三-redis淘汰机制" class="headerlink" title="三.redis淘汰机制:"></a>三.redis淘汰机制:</h1><p><strong>volatile-lru:</strong>从已设置过期的数据集中挑选最近最少使用的淘汰<br><strong>volatile-ttr:</strong>从已设置过期的数据集中挑选将要过期的数据淘汰<br><strong>volatile-random:</strong>从已设置过期的数据集中任意挑选数据淘汰<br><strong>allkeys-lru:</strong>从数据集中挑选最近最少使用的数据淘汰<br><strong>allkeys-random:</strong>从数据集中任意挑选数据淘汰<br><strong>noenviction:</strong>禁止淘汰数据</p>
-<h1 id="四-redis-持久化"><a href="#四-redis-持久化" class="headerlink" title="四.redis 持久化"></a>四.redis 持久化</h1><h2 id="1-rdb-默认持久化-快照-保存的是一种状态"><a href="#1-rdb-默认持久化-快照-保存的是一种状态" class="headerlink" title="1.rdb(默认持久化) 快照 保存的是一种状态"></a>1.rdb(默认持久化) 快照 保存的是一种状态</h2><h2 id="2-aof"><a href="#2-aof" class="headerlink" title="2.aof"></a>2.aof</h2><h1 id="五-redis缓存与数据一致性"><a href="#五-redis缓存与数据一致性" class="headerlink" title="五.redis缓存与数据一致性"></a>五.redis缓存与数据一致性</h1><h2 id="1-实时同步"><a href="#1-实时同步" class="headerlink" title="1.实时同步"></a>1.实时同步</h2><h3 id="1-缓存穿透"><a href="#1-缓存穿透" class="headerlink" title="(1).缓存穿透:"></a>(1).缓存穿透:</h3><p>   过多导致缓存雪崩 缓存穿透，是指查询一个数据库一定不存在的数据。正常的使用缓存流程大致是，数据查询先进行缓存查询，如果key不存在或者key已经过期，再对数据库进行查询，并把查询到的对象，放进缓存。如果数据库查询对象为空，则不放进缓存。</p>
-<h3 id="2-缓存雪崩"><a href="#2-缓存雪崩" class="headerlink" title="(2).缓存雪崩:"></a>(2).缓存雪崩:</h3><p>   是指在某一个时间段，缓存集中过期失效。</p>
-<p>产生雪崩的原因之一，比如在写本文的时候，马上就要到双十二零点，很快就会迎来一波抢购，这波商品时间比较集中的放入了缓存，假设缓存一个小时。那么到了凌晨一点钟的时候，这批商品的缓存就都过期了。而对这批商品的访问查询，都落到了数据库上，对于数据库而言，就会产生周期性的压力波峰。</p>
-<p>一般在做电商项目的时候，一般是采取不同分类商品，缓存不同周期。在同一分类中的商品，加上一个随机因子。这样能尽可能分散缓存过期时间，而且，热门类目的商品缓存时间长一些，冷门类目的商品缓存时间短一些，也能节省缓存服务的资源。</p>
-<h3 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="(3).解决方案:"></a>(3).解决方案:</h3><p><strong>1.加锁 **<br>**2.缓存预热(每个自己功能走一遍 已经缓存上了</strong><br><strong>3.设置标签缓存</strong></p>
-<h2 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿:"></a>缓存击穿:</h2><p><strong>是指一个key非常热点，在不停的扛着大并发，大并发集中对这一个点进行访问，当这个key在失效的瞬间，持续的大并发就穿破缓存，直接请求数据库，就像在一个屏障上凿开了一个洞</strong>。</p>
-<p>一般在做电商项目的时候，把这货就称为“爆款”。</p>
-<p>其实，大多数情况下这种爆款很难对数据库服务器造成压垮性的压力。达到这个级别的公司没有几家的。所以，务实主义的小编，对主打商品都是早早的做好了准备，让缓存永不过期。即便某些商品自己发酵成了爆款，也是直接设为永不过期就好了。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h2><h3 id="1-互斥锁"><a href="#1-互斥锁" class="headerlink" title="1.互斥锁"></a>1.互斥锁</h3><h3 id="2异步队列"><a href="#2异步队列" class="headerlink" title="2异步队列"></a>2异步队列</h3><h3 id="3-使用阿里的同步工具canal"><a href="#3-使用阿里的同步工具canal" class="headerlink" title="3.使用阿里的同步工具canal"></a>3.使用阿里的同步工具canal</h3><h3 id="4-采用udf-触发器-自定义函数的方式"><a href="#4-采用udf-触发器-自定义函数的方式" class="headerlink" title="4.采用udf(触发器)自定义函数的方式"></a>4.采用udf(触发器)自定义函数的方式</h3><h2 id="高可用"><a href="#高可用" class="headerlink" title="高可用:"></a>高可用:</h2><p>(一直都能用)描述一个系统经过专门的设计,从而减少停工时间,而保持其服务的高度可用性<br>高并发: 通过设计保证系统能够同时处理很多请求</p>
-<h2 id="高并发指标"><a href="#高并发指标" class="headerlink" title="高并发指标:"></a>高并发指标:</h2><p>1.响应时间<br>2.吞吐量<br>3.每秒查询率<br>4.并发用户数</p>
-<h2 id="提高系统的并发能力"><a href="#提高系统的并发能力" class="headerlink" title="提高系统的并发能力"></a>提高系统的并发能力</h2><h3 id="1-垂直扩展"><a href="#1-垂直扩展" class="headerlink" title="1.垂直扩展"></a>1.垂直扩展</h3><pre><code>(1)提升单机处理能力
-    &lt;1&gt;增加cpu和内存
-(2)提升单机架构性能
-    &lt;1&gt;增加缓存和异步处理
-    &lt;2&gt;使用无锁数据结构</code></pre><h3 id="2-水平扩展-最终解决方案-增加服务器数量"><a href="#2-水平扩展-最终解决方案-增加服务器数量" class="headerlink" title="2.水平扩展(最终解决方案):增加服务器数量"></a>2.水平扩展(最终解决方案):增加服务器数量</h3><h2 id="六-Redis主从复制"><a href="#六-Redis主从复制" class="headerlink" title="六.Redis主从复制"></a>六.Redis主从复制</h2><h2 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1.应用场景:"></a>1.应用场景:</h2><p>互联网各网站数据是多读少写</p>
-<h2 id="2-主从复制-一对多"><a href="#2-主从复制-一对多" class="headerlink" title="2.主从复制(一对多):"></a>2.主从复制(一对多):</h2><p>一个redis服务可以有多个该服务的复制品,这个redis主服务称为master(处理写),其他复制的服务器成为slavs(处理读)</p>
-<h2 id="七-redis-cluster-集群"><a href="#七-redis-cluster-集群" class="headerlink" title="七.redis cluster 集群"></a>七.redis cluster 集群</h2><h2 id="1-搭建方案"><a href="#1-搭建方案" class="headerlink" title="1.搭建方案"></a>1.搭建方案</h2><h3 id="1-twitter开发的twemproxy"><a href="#1-twitter开发的twemproxy" class="headerlink" title="(1).twitter开发的twemproxy"></a>(1).twitter开发的twemproxy</h3><h3 id="2-豌豆荚开发的codis"><a href="#2-豌豆荚开发的codis" class="headerlink" title="(2).豌豆荚开发的codis"></a>(2).豌豆荚开发的codis</h3><h3 id="3-redis官方的redis-cluster"><a href="#3-redis官方的redis-cluster" class="headerlink" title="(3).redis官方的redis cluster"></a>(3).redis官方的redis cluster</h3><h2 id="2-redis节点分配"><a href="#2-redis节点分配" class="headerlink" title="2.redis节点分配:"></a>2.redis节点分配:</h2><h3 id="1-a节点-0-5460"><a href="#1-a节点-0-5460" class="headerlink" title="1..a节点:0-5460"></a>1..a节点:0-5460</h3><h3 id="2-b节点-5461-10922"><a href="#2-b节点-5461-10922" class="headerlink" title="2.b节点 5461-10922"></a>2.b节点 5461-10922</h3><h3 id="3-c节点-10923-16383"><a href="#3-c节点-10923-16383" class="headerlink" title="3.c节点 10923-16383"></a>3.c节点 10923-16383</h3><h2 id="八-为什么需要序列化？"><a href="#八-为什么需要序列化？" class="headerlink" title="八.为什么需要序列化？"></a>八.为什么需要序列化？</h2><p>你要记住一句话，在JAVA中，一切皆对象，而将对象的状态信息转为存储或传输的形式需要序列化。</p>
-<h2 id="九-为什么前面的代码没有设置序列化？"><a href="#九-为什么前面的代码没有设置序列化？" class="headerlink" title="九.为什么前面的代码没有设置序列化？"></a>九.为什么前面的代码没有设置序列化？</h2><p>原因是是因为我们使用了@AutoWired，IOC容器为我们选择了StringRedisTemplate类来注入</p>
-<p>tomcat先进先出(排队)队列</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/22/Redis%E7%AE%80%E4%BB%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -1218,7 +1197,7 @@ public SecurityManager securityManager(CustomRealm customRealm) {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Pony
+    		&copy; 2020 Pony
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
