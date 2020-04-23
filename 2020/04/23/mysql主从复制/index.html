@@ -22,7 +22,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;1587178930085.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;1587179094429.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;1587179432819.png">
-<meta property="og:updated_time" content="2020-04-23T03:37:27.234Z">
+<meta property="og:updated_time" content="2020-04-23T03:42:11.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;1587178205079.png">
   
@@ -205,6 +205,10 @@
 <p>下一步在<strong>Master</strong>数据库创建数据同步用户，授予用户 slave REPLICATION SLAVE权限和REPLICATION CLIENT权限，用于在主从库之间同步数据。</p>
 <p><code>CREATE USER &#39;slave&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39;;</code></p>
 <p><code>GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &#39;slave&#39;@&#39;%&#39;;</code></p>
+<h2 id="配置Slave-从"><a href="#配置Slave-从" class="headerlink" title="配置Slave(从)"></a>配置Slave(从)</h2><p>和配置Master(主)一样，在Slave配置文件my.cnf中添加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line">## 设置server_id,注意要唯一</span><br><span class="line"></span><br><span class="line">server-id=101  </span><br><span class="line"></span><br><span class="line">## 开启二进制日志功能，以备Slave作为其它Slave的Master时使用</span><br><span class="line"></span><br><span class="line">log-bin=mysql-slave-bin   </span><br><span class="line"></span><br><span class="line">## relay_log配置中继日志</span><br><span class="line"></span><br><span class="line">relay_log=edu-mysql-relay-bin</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后也需要重启mysql服务和docker容器，操作和配置Master(主)一致。</p>
 
       
 
