@@ -149,6 +149,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-历城12349遇到的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/%E5%8E%86%E5%9F%8E12349%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">&#39;历城12349验收审计问题&#39;</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/%E5%8E%86%E5%9F%8E12349%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-05-12T09:13:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="历城12349验收审计遇到的问题"><a href="#历城12349验收审计遇到的问题" class="headerlink" title="历城12349验收审计遇到的问题"></a>历城12349验收审计遇到的问题</h1><h2 id="需提供为居民诉求提供服务的合理记录-包括-手里诉求记录形成受理件联系服务商或者派出人员处理诉求记录跟踪监管记录回访记录投诉建议记录等"><a href="#需提供为居民诉求提供服务的合理记录-包括-手里诉求记录形成受理件联系服务商或者派出人员处理诉求记录跟踪监管记录回访记录投诉建议记录等" class="headerlink" title="需提供为居民诉求提供服务的合理记录,包括:手里诉求记录形成受理件联系服务商或者派出人员处理诉求记录跟踪监管记录回访记录投诉建议记录等;"></a>需提供为居民诉求提供服务的合理记录,包括:手里诉求记录形成受理件联系服务商或者派出人员处理诉求记录跟踪监管记录回访记录投诉建议记录等;</h2><h3 id="1-分析表关系-上述所涵盖的信息分别为shop-order-商品订单表-shop-order-common-订单详细表-shop-evaluate-goods-信誉评价表-shop-service-person-服务人员表"><a href="#1-分析表关系-上述所涵盖的信息分别为shop-order-商品订单表-shop-order-common-订单详细表-shop-evaluate-goods-信誉评价表-shop-service-person-服务人员表" class="headerlink" title="1.    分析表关系,上述所涵盖的信息分别为shop_order(商品订单表) , shop_order_common (订单详细表),shop_evaluate_goods (信誉评价表) ,shop_service_person (服务人员表);"></a>1.    分析表关系,上述所涵盖的信息分别为shop_order(商品订单表) , shop_order_common (订单详细表),shop_evaluate_goods (信誉评价表) ,shop_service_person (服务人员表);</h3><h3 id="2-查询我想要的信息sql语句-四表联查-四表通过order-id进行关联-订单表里存着服务人员的id-因为数据库存放的是时间戳所以用mysql函数把时间戳转换成日期FROM-UNIXTIME-o-add-time-sql语句如下"><a href="#2-查询我想要的信息sql语句-四表联查-四表通过order-id进行关联-订单表里存着服务人员的id-因为数据库存放的是时间戳所以用mysql函数把时间戳转换成日期FROM-UNIXTIME-o-add-time-sql语句如下" class="headerlink" title="2.    查询我想要的信息sql语句,四表联查,四表通过order_id进行关联; 订单表里存着服务人员的id  因为数据库存放的是时间戳所以用mysql函数把时间戳转换成日期FROM_UNIXTIME(o.add_time),sql语句如下:"></a>2.    查询我想要的信息sql语句,四表联查,四表通过order_id进行关联; 订单表里存着服务人员的id  因为数据库存放的是时间戳所以用mysql函数把时间戳转换成日期FROM_UNIXTIME(o.add_time),sql语句如下:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SELECT  FROM_UNIXTIME(o.add_time) AS &apos;接单时间&apos;,FROM_UNIXTIME(c.shipping_time) AS &apos;配送时间&apos;,FROM_UNIXTIME(g.geval_addtime) AS &apos;评价时间&apos;, </span><br><span class="line"> p.service_truename AS &apos;服务人员&apos;,</span><br><span class="line"> c.order_message AS &apos;订单留言&apos;,</span><br><span class="line"> c.reciver_name AS &apos;收货人姓名&apos;,</span><br><span class="line"> c.reciver_info AS &apos;收货人地址&apos;,</span><br><span class="line"> g.geval_id AS &apos;商品编号&apos;,</span><br><span class="line"> g.geval_goodsname AS &apos;商品名称&apos;,</span><br><span class="line"> g.geval_goodsprice AS &apos;商品价格&apos;,</span><br><span class="line"> g.geval_scores AS &apos;商品评分&apos;,</span><br><span class="line"> g.geval_content AS &apos;服务评价&apos;,</span><br><span class="line"> g.geval_storename AS &apos;商家名称&apos;,</span><br><span class="line"> g.geval_frommembername AS &apos;评价人名称&apos;</span><br><span class="line"> </span><br><span class="line"> FROM shop_order o, shop_order_common c ,shop_evaluate_goods g ,shop_service_person p WHERE o.order_id=c.order_id AND c.order_id=g.geval_orderid AND o.order_id=g.geval_orderid AND o.service_id=p.service_id</span><br></pre></td></tr></table></figure>
+<h3 id="3-然后发现订单表里服务人员的id有好多没有-问题来了-要批量修改数据-而且修改的数据必须要是服务人员表里面id字段里面的-不能超过这个范围-在这个范围内-并且插入不能一直一个id-要随机来-所以要用到mysql的rand-函数-并且不能一下插入多个-一次只能生成一个id-所以用到mysql的LIMIT函数-子查询将查出来的id随机插入到shop-order表的service-id字段里-例-要从tablename表中随机提取一条记录sql语句为"><a href="#3-然后发现订单表里服务人员的id有好多没有-问题来了-要批量修改数据-而且修改的数据必须要是服务人员表里面id字段里面的-不能超过这个范围-在这个范围内-并且插入不能一直一个id-要随机来-所以要用到mysql的rand-函数-并且不能一下插入多个-一次只能生成一个id-所以用到mysql的LIMIT函数-子查询将查出来的id随机插入到shop-order表的service-id字段里-例-要从tablename表中随机提取一条记录sql语句为" class="headerlink" title="3.    然后发现订单表里服务人员的id有好多没有,问题来了,要批量修改数据,而且修改的数据必须要是服务人员表里面id字段里面的,不能超过这个范围,在这个范围内,并且插入不能一直一个id,要随机来,所以要用到mysql的rand()函数,并且不能一下插入多个,一次只能生成一个id,所以用到mysql的LIMIT函数 子查询将查出来的id随机插入到shop_order表的service_id字段里,例:要从tablename表中随机提取一条记录sql语句为:"></a>3.    然后发现订单表里服务人员的id有好多没有,问题来了,要批量修改数据,而且修改的数据必须要是服务人员表里面id字段里面的,不能超过这个范围,在这个范围内,并且插入不能一直一个id,要随机来,所以要用到mysql的rand()函数,并且不能一下插入多个,一次只能生成一个id,所以用到mysql的LIMIT函数 子查询将查出来的id随机插入到shop_order表的service_id字段里,例:要从tablename表中随机提取一条记录sql语句为:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM tablename ORDER BY RAND() LIMIT 1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE shop_order SET service_id = ( SELECT service_id FROM shop_service_person ORDER BY RAND() LIMIT 1 )</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-然后再查-对应的服务人员已经出来了"><a href="#4-然后再查-对应的服务人员已经出来了" class="headerlink" title="4.然后再查,对应的服务人员已经出来了"></a>4.然后再查,对应的服务人员已经出来了</h3><h3 id="5-然后发现需要用的配送时间为1970年-原因为-这个字段值为空的都为1970年-所以需要添加字段为空的时间戳-而且这个时间又不能在评价时间之前-具体sql语句如下"><a href="#5-然后发现需要用的配送时间为1970年-原因为-这个字段值为空的都为1970年-所以需要添加字段为空的时间戳-而且这个时间又不能在评价时间之前-具体sql语句如下" class="headerlink" title="5.然后发现需要用的配送时间为1970年,原因为 这个字段值为空的都为1970年,所以需要添加字段为空的时间戳,而且这个时间又不能在评价时间之前,具体sql语句如下:"></a>5.然后发现需要用的配送时间为1970年,原因为 这个字段值为空的都为1970年,所以需要添加字段为空的时间戳,而且这个时间又不能在评价时间之前,具体sql语句如下:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE shop_order_common SET shipping_time = ( SELECT shop_order.add_time  FROM shop_order WHERE shop_order_common.order_id = shop_order.order_id ) WHERE shipping_time=0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE shop_order_common  SET shipping_time=(shipping_time+FLOOR(3000+RAND()*7200) ) WHERE shipping_time&gt;0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT FLOOR(3000+RAND()*7200)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/%E5%8E%86%E5%9F%8E12349%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-Ngrok" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -863,70 +937,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/09/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-打印指定html内容" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/07/%E6%89%93%E5%8D%B0%E6%8C%87%E5%AE%9Ahtml%E5%86%85%E5%AE%B9/">&#39;打印html指定内容&#39;</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/07/%E6%89%93%E5%8D%B0%E6%8C%87%E5%AE%9Ahtml%E5%86%85%E5%AE%B9/" class="archive-article-date">
-  	<time datetime="2019-12-07T05:20:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%@</span> <span class="attr">page</span> <span class="attr">language</span>=<span class="string">"java"</span> <span class="attr">contentType</span>=<span class="string">"text/html; charset=UTF-8"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">pageEncoding</span>=<span class="string">"UTF-8"</span>%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%@include</span> <span class="attr">file</span>=<span class="string">"/WEB-INF/jsp/common/tag.jsp"</span>%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span>   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="comment">//打印选区内容  包含在 对应标识里面的内容为打印内容</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">printit</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        bdhtml=<span class="built_in">window</span>.document.body.innerHTML; <span class="comment">//获取当前页的html代码</span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        sprnstr="<span class="comment">&lt;!--startprint--&gt;</span>"; //设置打印开始区域 </span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        eprnstr="<span class="comment">&lt;!--endprint--&gt;</span>";  //设置打印结束区域 </span></span></span><br><span class="line"><span class="actionscript">        prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+<span class="number">17</span>);  <span class="comment">//从开始代码向后取html </span></span></span><br><span class="line"><span class="actionscript">        prnhtml=prnhtml.substring(<span class="number">0</span>,prnhtml.indexOf(eprnstr));  <span class="comment">//从结束代码向前取html </span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>.document.body.innerHTML=prnhtml;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>.print();</span></span><br><span class="line"><span class="javascript">		<span class="built_in">window</span>.document.body.innerHTML=bdhtml;    <span class="comment">//还原页面</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"easyui-layout"</span> <span class="attr">data-options</span>=<span class="string">"fit:true,border:false"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">data-options</span>=<span class="string">"region:'center',title:'粘贴单打印'"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"datagrid-toolbar"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0)"</span> <span class="attr">id</span>=<span class="string">"lsbackBtn"</span> <span class="attr">class</span>=<span class="string">"easyui-linkbutton"</span></span></span><br><span class="line"><span class="tag">				<span class="attr">iconCls</span>=<span class="string">"icon-redo"</span> <span class="attr">plain</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">				<span class="attr">onclick</span>=<span class="string">"comeback('$&#123;patient.zyh &#125;')"</span>&gt;</span>返回<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">"打印"</span></span></span><br><span class="line"><span class="tag">				<span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"javascript:printit();"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--startprint--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span>$&#123;sydw &#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span>粘 贴 单<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"63%"</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">cellspacing</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">style</span>=<span class="string">"border-collapse: collapse; height: 849px; width: 686px"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">cellpadding</span>=<span class="string">"5"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">style</span>=<span class="string">"width: 629px; "</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">							<span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>姓名：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">							<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;patient.xm &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">							<span class="tag">&lt;<span class="name">td</span>  <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>科室：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">							<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;patient.dqksmc &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">							<span class="tag">&lt;<span class="name">td</span>  <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>住院号：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">							<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;patient.zyh &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"height: 755px; width: 671px"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">						<span class="attr">width</span>=<span class="string">"100%"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">					<span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="comment">&lt;!--endprint--&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/07/%E6%89%93%E5%8D%B0%E6%8C%87%E5%AE%9Ahtml%E5%86%85%E5%AE%B9/">展开全文 >></a>
         </p>
       
 
